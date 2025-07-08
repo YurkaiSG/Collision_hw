@@ -7,14 +7,17 @@ public class Cube : MonoBehaviour
     private int _dividerValue = 2;
     private Renderer _renderer;
     private Rigidbody _rigidBody;
+    private int _generation = 0;
 
     public float SplitChance => _splitChance;
+    public int CurrentGeneration => _generation;
     public Rigidbody RigidBody => _rigidBody;
 
     private void Awake()
     {
         _rigidBody = GetComponent<Rigidbody>();
         _renderer = GetComponent<Renderer>();
+        _generation++;
         SetRandomColor();
     }
 

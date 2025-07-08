@@ -25,7 +25,11 @@ public class CubeDivider : MonoBehaviour
         {
             _cubes = _spawner.SpawnNewObjects(cube);
             _explosion.Explode(_cubes, cube.transform.position);
-        }    
+        }
+        else
+        {
+            _explosion.Explode(cube);
+        }
 
         Destroy(cube.gameObject);
     }
