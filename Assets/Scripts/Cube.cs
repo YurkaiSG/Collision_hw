@@ -18,7 +18,7 @@ public class Cube : MonoBehaviour
         _rigidBody = GetComponent<Rigidbody>();
         _renderer = GetComponent<Renderer>();
         _generation++;
-        SetRandomColor();
+        ChangeColorToRandom();
     }
 
     public void DecreaseSplitChance(float chance)
@@ -26,7 +26,7 @@ public class Cube : MonoBehaviour
         _splitChance = chance / _dividerValue;
     }
 
-    private void SetRandomColor()
+    private void ChangeColorToRandom()
     {
         _renderer.material.color = Random.ColorHSV();
     }

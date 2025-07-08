@@ -7,7 +7,7 @@ public class Caster : MonoBehaviour
     private float _rayDistance = 50f;
     private int _mouseKeyCode = 0;
 
-    public event Action<Cube> OnClick;
+    public event Action<Cube> Clicked;
 
     private void Update()
     {
@@ -22,7 +22,7 @@ public class Caster : MonoBehaviour
 
                 if (castedObject.TryGetComponent(out Cube cube))
                 {
-                    OnClick?.Invoke(cube);
+                    Clicked?.Invoke(cube);
                 }
             }
         }

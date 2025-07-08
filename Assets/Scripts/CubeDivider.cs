@@ -11,12 +11,12 @@ public class CubeDivider : MonoBehaviour
 
     private void OnEnable()
     {
-        _caster.OnClick += Divide;
+        _caster.Clicked += Divide;
     }
 
     private void OnDisable()
     {
-        _caster.OnClick -= Divide;
+        _caster.Clicked -= Divide;
     }
 
     private void Divide(Cube cube)
