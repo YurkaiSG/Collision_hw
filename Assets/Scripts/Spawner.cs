@@ -12,7 +12,7 @@ public class Spawner : MonoBehaviour
     {
         Vector3 newScale = cube.transform.localScale / _dividerValue;
         Vector3 newPosition;
-        GameObject spawnedObject;
+        Cube spawnedObject;
         List<Cube> spawnedCubes = new List<Cube>();
         int objectsAmount = Random.Range(_minSpawnAmount, _maxSpawnAmount + 1);
 
@@ -20,13 +20,10 @@ public class Spawner : MonoBehaviour
         {
             newPosition = cube.transform.position + Random.insideUnitSphere * _spawnRadius;
             newPosition.y = cube.transform.position.y;
-            spawnedObject = Instantiate(cube.gameObject, newPosition, new Quaternion());
+            spawnedObject = Instantiate(cube, newPosition, new Quaternion());
             spawnedObject.transform.localScale = newScale;
-
-            if (spawnedObject.TryGetComponent(out Cube spawnedCube))
-                spawnedCube.DecreaseSplitChance(cube.SplitChance);
-
-            spawnedCubes.Add(spawnedCube);
+            spawnedObject.DecreaseSplitChance(cube.SplitChance);
+            spawnedCubes.Add(spawnedObject);
         }
 
         return spawnedCubes;
