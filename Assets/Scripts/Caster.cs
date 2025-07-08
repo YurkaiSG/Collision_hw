@@ -1,11 +1,13 @@
-using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Caster : MonoBehaviour
 {
     private Ray _ray;
     private float _rayDistance = 50f;
-    private string _targetTag = "Cube";
+
+    [HideInInspector]
+    public UnityEvent<Cube> OnMouseClicked;
 
     void Update()
     {
@@ -18,9 +20,9 @@ public class Caster : MonoBehaviour
             {
                 GameObject castedObject = _hit.transform.gameObject;
 
-                if (castedObject.tag == _targetTag)
+                if (castedObject.TryGetComponent(out Cube cube))
                 {
-                    castedObject.GetComponent<Cube>().OnMouseClick();
+                    OnMouseClicked?.Invoke(cube);
                 }
             }
         }
