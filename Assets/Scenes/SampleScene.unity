@@ -153,12 +153,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _caster: {fileID: 865877310}
-  OnSpawn:
-    m_PersistentCalls:
-      m_Calls: []
-  OnExplode:
-    m_PersistentCalls:
-      m_Calls: []
+  _spawner: {fileID: 1800195738}
+  _explosion: {fileID: 786763880}
 --- !u!4 &200655685
 Transform:
   m_ObjectHideFlags: 0
@@ -612,7 +608,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6893bff290d4dc4eb4e305c4916b44d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _divider: {fileID: 200655684}
   _explosionRadius: 20
   _explosionForce: 500
 --- !u!4 &786763881
@@ -659,9 +654,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5caeb25354d79f741a8829741be6246c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnMouseClicked:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!4 &865877311
 Transform:
   m_ObjectHideFlags: 0
@@ -1044,7 +1036,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a53dafdd21a4f4e4f9b406ee2a4ce0ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _divider: {fileID: 200655684}
   _minSpawnAmount: 2
   _maxSpawnAmount: 6
   _spawnRadius: 2

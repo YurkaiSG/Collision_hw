@@ -1,31 +1,30 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class CubeDivider : MonoBehaviour
 {
     [SerializeField] private Caster _caster;
-
-    [HideInInspector]
-    public UnityEvent<Cube> OnSpawn;
-    [HideInInspector]
-    public UnityEvent<Cube> OnExplode;
+    [SerializeField] private Spawner _spawner;
+    [SerializeField] private Explosion _explosion;
+    private List<Cube> _cubes;
 
     private void OnEnable()
     {
-        _caster.OnMouseClicked.AddListener(Divide);
+        _caster.OnClick += Divide;
     }
 
     private void OnDisable()
     {
-        _caster.OnMouseClicked.RemoveListener(Divide);
+        _caster.OnClick -= Divide;
     }
 
     private void Divide(Cube cube)
     {
-        if (cube.SplitChance >= Random.value)
+        if (cube.SplitChance >= UnityEngine.Random.value)
         {
-            OnSpawn.Invoke(cube);
-            OnExplode.Invoke(cube);
+            _cubes = _spawner.SpawnNewObjects(cube);
+            _explosion.Explode(_cubes, cube.transform.position);
         }    
 
         Destroy(cube.gameObject);

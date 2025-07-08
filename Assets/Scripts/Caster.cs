@@ -1,17 +1,17 @@
+using System;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class Caster : MonoBehaviour
 {
     private Ray _ray;
     private float _rayDistance = 50f;
+    private int _mouseKeyCode = 0;
 
-    [HideInInspector]
-    public UnityEvent<Cube> OnMouseClicked;
+    public event Action<Cube> OnClick;
 
-    void Update()
+    private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(_mouseKeyCode))
         {
             RaycastHit _hit;
             _ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -22,7 +22,7 @@ public class Caster : MonoBehaviour
 
                 if (castedObject.TryGetComponent(out Cube cube))
                 {
-                    OnMouseClicked?.Invoke(cube);
+                    OnClick?.Invoke(cube);
                 }
             }
         }
